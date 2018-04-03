@@ -2,14 +2,16 @@
 import React from 'react';
 
 class DelayedButton extends React.Component{
-  create = () => {
-    console.log('delayed check')
-    // return [event.target.x, event.target.y]
+  handleClick = (event) => {
+    event.persist()
+    setTimeout(() => (this.props.onDelayedClick(event)), this.props.delay)
+    // this.props.onDelayedClick(event)
+
   }
 
   render() {
     return (
-      <button onReceiveCoordinates={this.create()} />
+      <button onClick={this.handleClick}>Delayed Button</button>
     )
   }
 }
